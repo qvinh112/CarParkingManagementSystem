@@ -1,0 +1,422 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{851685A4-9B72-4224-9452-F8C0E1AF1562}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>CarParkingManagementSystem</RootNamespace>
+    <AssemblyName>CarParkingManagementSystem</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BSLayer\Attendant.cs" />
+    <Compile Include="BSLayer\Customer.cs" />
+    <Compile Include="BSLayer\login.cs" />
+    <Compile Include="BSLayer\Manager.cs" />
+    <Compile Include="DBLayer\Connector.cs" />
+    <Compile Include="formAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formAccount.Designer.cs">
+      <DependentUpon>formAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formAccountDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formAccountDetail.Designer.cs">
+      <DependentUpon>formAccountDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formAttendantMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formAttendantMain.Designer.cs">
+      <DependentUpon>formAttendantMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formChangePassAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formChangePassAdmin.Designer.cs">
+      <DependentUpon>formChangePassAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formCustomerMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formCustomerMain.Designer.cs">
+      <DependentUpon>formCustomerMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formCustomerDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formCustomerDetail.Designer.cs">
+      <DependentUpon>formCustomerDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formCustomerOfAttendant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formCustomerOfAttendant.Designer.cs">
+      <DependentUpon>formCustomerOfAttendant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formInputTicket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formInputTicket.Designer.cs">
+      <DependentUpon>formInputTicket.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formParkCarAttendant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formParkCarAttendant.Designer.cs">
+      <DependentUpon>formParkCarAttendant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formParkingInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formParkingInformation.Designer.cs">
+      <DependentUpon>formParkingInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formParkingLot.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formParkingLot.Designer.cs">
+      <DependentUpon>formParkingLot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formParkingSpace.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formParkingSpace.Designer.cs">
+      <DependentUpon>formParkingSpace.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formChangePassword.Designer.cs">
+      <DependentUpon>formChangePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formCustomer.Designer.cs">
+      <DependentUpon>formCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formLogin.Designer.cs">
+      <DependentUpon>formLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formMain.Designer.cs">
+      <DependentUpon>formMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formParkingSpaceDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formParkingSpaceDetail.Designer.cs">
+      <DependentUpon>formParkingSpaceDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formPayment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formPayment.Designer.cs">
+      <DependentUpon>formPayment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formReport.Designer.cs">
+      <DependentUpon>formReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formRetrieveCarAttendant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formRetrieveCarAttendant.Designer.cs">
+      <DependentUpon>formRetrieveCarAttendant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formStaff.Designer.cs">
+      <DependentUpon>formStaff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formStaffDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formStaffDetail.Designer.cs">
+      <DependentUpon>formStaffDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formUser.Designer.cs">
+      <DependentUpon>formUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formUserAttendant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formUserAttendant.Designer.cs">
+      <DependentUpon>formUserAttendant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formUserCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formUserCustomer.Designer.cs">
+      <DependentUpon>formUserCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="parkingSpace.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="parkingSpace.Designer.cs">
+      <DependentUpon>parkingSpace.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="formAccount.resx">
+      <DependentUpon>formAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formAccountDetail.resx">
+      <DependentUpon>formAccountDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formAttendantMain.resx">
+      <DependentUpon>formAttendantMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formChangePassAdmin.resx">
+      <DependentUpon>formChangePassAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formCustomerMain.resx">
+      <DependentUpon>formCustomerMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formCustomer.resx">
+      <DependentUpon>formCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formCustomerDetail.resx">
+      <DependentUpon>formCustomerDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formCustomerOfAttendant.resx">
+      <DependentUpon>formCustomerOfAttendant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formInputTicket.resx">
+      <DependentUpon>formInputTicket.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formParkCarAttendant.resx">
+      <DependentUpon>formParkCarAttendant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formParkingInformation.resx">
+      <DependentUpon>formParkingInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formParkingLot.resx">
+      <DependentUpon>formParkingLot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formParkingSpace.resx">
+      <DependentUpon>formParkingSpace.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formChangePassword.resx">
+      <DependentUpon>formChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formLogin.resx">
+      <DependentUpon>formLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formMain.resx">
+      <DependentUpon>formMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formParkingSpaceDetail.resx">
+      <DependentUpon>formParkingSpaceDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formPayment.resx">
+      <DependentUpon>formPayment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formReport.resx">
+      <DependentUpon>formReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formRetrieveCarAttendant.resx">
+      <DependentUpon>formRetrieveCarAttendant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formStaff.resx">
+      <DependentUpon>formStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formStaffDetail.resx">
+      <DependentUpon>formStaffDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formUser.resx">
+      <DependentUpon>formUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formUserAttendant.resx">
+      <DependentUpon>formUserAttendant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formUserCustomer.resx">
+      <DependentUpon>formUserCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="parkingSpace.resx">
+      <DependentUpon>parkingSpace.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\car-parking.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit-full-screen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit-full-screen1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ausgang.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\avatar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\parking-area.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\maximize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\maximize %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\maximize %281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\report.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\multiple-users-silhouette.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\id-card.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add-user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit-white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minimize-white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\parkcar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\retrievecar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\payment-method.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\find.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reload.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\manager.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\staff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\printer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\parking.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\car.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
