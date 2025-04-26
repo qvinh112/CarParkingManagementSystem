@@ -1,13 +1,16 @@
-﻿using CarParkingManagementSystem.BSLayer;
+using CarParkingManagementSystem.BSLayer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
+
 
 namespace CarParkingManagementSystem
 {
@@ -48,13 +51,6 @@ namespace CarParkingManagementSystem
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void btnThanhtoan_Click(object sender, EventArgs e)
-        {
-            customer.LayXe(customer.ViTriDoXe(IDKH).ToString());
-            MessageBox.Show("Thanh toán thành công!");
-            MessageBox.Show("Lấy xe thành công!");
-            this.Close();
-        }
 
         private void btnInternet_Click(object sender, EventArgs e)
         {
@@ -90,6 +86,85 @@ namespace CarParkingManagementSystem
         private void txtBienso_TextChanged(object sender, EventArgs e)
         {
 
+        }
+        private string CleanTransactionContent(string content)
+        {
+            if (string.IsNullOrEmpty(content))
+                return "";
+
+            // Chuyển về chữ thường, loại bỏ ký tự đặc biệt
+            var cleaned = new string(content
+                .ToLower()
+                .Where(c => char.IsLetterOrDigit(c)) // chỉ giữ lại chữ & số
+                .ToArray());
+
+            return cleaned;
+        }
+
+        private async void button1_Click(object sender, EventArgs e)
+        {
+            string accountNumber = "LOCSPAY000308452";
+            string apiUrl = $"https://my.sepay.vn/userapi/transactions/list?account_number={accountNumber}&limit=10";
+            string bearerToken = "FOE8NU31EPPH0KIGPSBV92XOJ0GJY46OHRI9K2VNKUTMZALAJ1ERDRF4ZTMFVDFX";
+
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    client.DefaultRequestHeaders.Clear();
+                    client.DefaultRequestHeaders.Add("Authorization", $"Bearer {bearerToken}");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                    var response = await client.GetAsync(apiUrl);
+                    response.EnsureSuccessStatusCode();
+
+                    var json = await response.Content.ReadAsStringAsync();
+                    dynamic data = JsonConvert.DeserializeObject(json);
+
+                    if (data == null || data.transactions == null)
+                    {
+                        MessageBox.Show("Không lấy được dữ liệu từ API hoặc dữ liệu không đúng định dạng.");
+                        return;
+                    }
+
+                    string amountInput = txtPhidoxe?.Text?.Trim();
+                    string desInput = txtBienso?.Text?.Trim();
+
+                    var transactions = ((IEnumerable<dynamic>)data.transactions).ToList(); // chỉ cần dòng này
+                    var sortedTransactions = transactions.OrderByDescending(tx => DateTime.Parse((string)tx.transaction_date));
+
+                    foreach (var tx in sortedTransactions)
+                    {
+                        string amount = tx.amount_in;
+                        string content = tx.transaction_content;
+
+                        if (content != null)
+                        {
+                            string cleanedContent = CleanTransactionContent(content.ToString());
+
+                            string normalizedAmount = amount.Contains('.') ? amount.Split('.')[0] : amount;
+
+                            bool amountMatches = normalizedAmount == amountInput;
+                            string cleanedInput = CleanTransactionContent(desInput);
+                            bool contentMatches = cleanedContent.Contains(cleanedInput);
+
+
+                            if (amountMatches && contentMatches)
+                            {
+                                MessageBox.Show("✅ Thanh toán thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                return;
+                            }
+                        }
+                    }
+
+                    MessageBox.Show("❌ Chưa thấy giao dịch phù hợp!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi khi gọi API!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Chi tiết lỗi: " + ex.Message);
+                }
+            }
         }
     }
 }
